@@ -36,12 +36,6 @@ An Android library that takes the standard toast to the next level with many sty
 2) Pass your style in the static constructor and call `show();` and you're done!
 
 ```java
-    StyleableToast.makeText(context, "Hello World!", R.style.mytoast).show();
-```
-
-or
-
-```java
     StyleableToast.makeText(context, "Hello World!", Toast.LENGTH_LONG, R.style.mytoast).show();
 ```
 

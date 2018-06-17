@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <declare-styleable name="StyleableToast">
         <attr name="android:radius" />
         <attr name="android:gravity" />
@@ -9,10 +10,9 @@
         <attr name="android:textColor" />
         <attr name="android:textSize" />
         <attr name="android:textStyle" />
-        <attr name="android:colorBackground" />
         <attr name="android:fontFamily" />
         <attr name="android:strokeWidth" />
         <attr name="android:strokeColor" />
-        <attr name="st.font" format="reference" />
+        <attr name="android:colorBackground" />
     </declare-styleable>
 </resources>

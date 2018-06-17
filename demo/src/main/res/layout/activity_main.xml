@@ -25,12 +25,12 @@
                 <Button
                     android:id="@+id/b1"
                     style="@style/DemoButton"
-                    android:text="Colored background" />
+                    android:text="Colored background + Gravity.TOP" />
 
                 <Button
                     android:id="@+id/b2"
                     style="@style/DemoButton"
-                    android:text="Colored text" />
+                    android:text="Colored text + Gravity.CENTER" />
 
 
                 <Button

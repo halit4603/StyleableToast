@@ -40,6 +40,10 @@ import android.widget.Toast;
 @SuppressLint("ViewConstructor")
 public class StyleableToast extends LinearLayout {
 
+    private static final int OPACITY_OPAQUE = -1;
+    private static final int GRAVITY_TOP = 48;
+    private static final int GRAVITY_CENTER = 17;
+
     private int cornerRadius;
     private int backgroundColor;
     private int strokeColor;
@@ -141,10 +145,9 @@ public class StyleableToast extends LinearLayout {
             gradientDrawable.setCornerRadius(cornerRadius);
         }
 
-        if(backgroundColor !=0){
+        if (backgroundColor != 0) {
             gradientDrawable.setColor(backgroundColor);
         }
-
 
         if (opaqueBackground) {
             gradientDrawable.setAlpha(getResources().getInteger(R.integer.fullBackgroundAlpha));
@@ -228,20 +231,21 @@ public class StyleableToast extends LinearLayout {
         int defaultBackgroundColor = ContextCompat.getColor(getContext(), R.color.default_background_color);
         int defaultCornerRadius = (int) getResources().getDimension(R.dimen.default_corner_radius);
 
-        opaqueBackground = typedArray.getInt(R.styleable.StyleableToast_android_opacity, 0) == -1;
-        backgroundColor = typedArray.getColor(R.styleable.StyleableToast_android_colorBackground, defaultBackgroundColor);
+        backgroundColor = typedArray.getColor(R.styleable.StyleableToast_android_colorBackground,defaultBackgroundColor);
+        opaqueBackground = typedArray.getInt(R.styleable.StyleableToast_android_opacity, 0) == OPACITY_OPAQUE;
         cornerRadius = (int) typedArray.getDimension(R.styleable.StyleableToast_android_radius, defaultCornerRadius);
         gravity = typedArray.getInt(R.styleable.StyleableToast_android_gravity, Gravity.BOTTOM);
+
         if (typedArray.hasValue(R.styleable.StyleableToast_android_strokeWidth) && typedArray.hasValue(R.styleable.StyleableToast_android_strokeColor)) {
             strokeWidth = (int) typedArray.getFloat(R.styleable.StyleableToast_android_strokeWidth, 0);
             strokeColor = typedArray.getColor(R.styleable.StyleableToast_android_strokeColor, Color.TRANSPARENT);
         }
 
-        //        if (gravity == 1) {
-//            gravity = Gravity.CENTER;
-//        } else if (gravity == 2) {
-//            gravity = Gravity.TOP;
-//        }
+        if (gravity == GRAVITY_CENTER) {
+            gravity = Gravity.CENTER;
+        } else if (gravity == GRAVITY_TOP) {
+            gravity = Gravity.TOP;
+        }
     }
 
     private void loadTextViewAttributes() {
@@ -252,7 +256,7 @@ public class StyleableToast extends LinearLayout {
         textColor = typedArray.getColor(R.styleable.StyleableToast_android_textColor, textView.getCurrentTextColor());
         textBold = typedArray.getInt(R.styleable.StyleableToast_android_textStyle, 0) == 1;
         textSize = typedArray.getDimension(R.styleable.StyleableToast_android_textSize, 0);
-        font = typedArray.getResourceId(R.styleable.StyleableToast_st_font, 0);
+        font = typedArray.getResourceId(R.styleable.StyleableToast_android_fontFamily, 0);
         isTextSizeFromStyleXml = textSize > 0;
     }
 

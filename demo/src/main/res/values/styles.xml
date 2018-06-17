@@ -33,11 +33,12 @@
     </style>
 
     <style name="coloredBackground">
-        <item name="android:colorBackground">#d2383f</item>
+        <item name="android:colorBackground">#f002</item>
     </style>
 
     <style name="coloredText">
         <item name="android:textColor">#ff22</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="coloredBoldText">
@@ -46,7 +47,8 @@
     </style>
 
     <style name="customFont">
-        <!--<item name="font">@font/dosis</item>-->
+        <item name="android:textColor">#FF5A5F</item>
+        <item name="android:fontFamily">@font/dosis</item>
     </style>
 
     <style name="cornerRadius5Dp">

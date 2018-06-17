@@ -3,6 +3,7 @@ package com.muddzdev.styleabletoast;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.widget.Toast;
 
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public void coloredBackground() {
         new StyleableToast.Builder(this)
                 .text(toastMsg)
+                .gravity(Gravity.TOP)
                 .backgroundColor(redColor)
                 .show();
     }
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public void coloredText() {
         new StyleableToast.Builder(this)
                 .text(toastMsg)
+                .gravity(Gravity.CENTER)
                 .textColor(redColor)
                 .show();
     }

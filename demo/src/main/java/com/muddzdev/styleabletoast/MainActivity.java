@@ -3,6 +3,7 @@ package com.muddzdev.styleabletoast;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnLongClick(R.id.b1)
     public boolean coloredBackgroundStyle() {
-        StyleableToast.makeText(this, toastMsg, R.style.coloredBackground).show();
+        StyleableToast.makeText(this, toastMsg, R.style.coloredBackground, Toast.LENGTH_LONG).show();
         return true;
     }
 
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnLongClick(R.id.b6)
     public boolean iconStartStyle() {
-        StyleableToast.makeText(this, toastMsg, R.style.iconStart).show();
+        StyleableToast.makeText(this, toastMsg, R.style.drawableStart).show();
         return true;
     }
 
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnLongClick(R.id.b7)
     public boolean iconEndStyle() {
-        StyleableToast.makeText(this, toastMsg, R.style.iconEnd).show();
+        StyleableToast.makeText(this, toastMsg, R.style.drawableEnd).show();
         return true;
     }
 
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnLongClick(R.id.b8)
     public boolean iconStartEndStyle() {
-        StyleableToast.makeText(this, toastMsg, R.style.iconStartEnd).show();
+        StyleableToast.makeText(this, toastMsg, R.style.drawableStartEnd).show();
         return true;
     }
 

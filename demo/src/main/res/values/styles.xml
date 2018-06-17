@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="DemoButton" parent="Base.Widget.AppCompat.Button">
+    <style name="DemoButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">false</item>
@@ -17,64 +17,58 @@
     </style>
 
     <style name="AllStyles">
-        <item name="strokeWidth">2dp</item>
-        <item name="strokeColor">#00FFFF</item>
-        <item name="colorBackground">#000</item>
-        <item name="radius">12dp</item>
 
-        <item name="font">@font/dosis</item>
-        <item name="textSize">18sp</item>
-        <item name="textColor">#ff0</item>
-        <item name="textBold">true</item>
+        <item name="android:opacity">opaque</item>
+        <item name="android:colorBackground">#d2383f</item>
 
-        <item name="solidBackground">true</item>
-        <item name="iconStart">@drawable/ic_airplanemode_inactive_black_24dp</item>
-        <item name="iconEnd">@drawable/ic_airplanemode_inactive_black_24dp</item>
-        <item name="length">SHORT</item>
+        <item name="android:strokeWidth">10</item>
+        <item name="android:strokeColor">#767474</item>
+
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:drawableStart">@drawable/ic_airplanemode_inactive_black_24dp</item>
+        <item name="android:drawableEnd">@drawable/ic_airplanemode_inactive_black_24dp</item>
+
     </style>
 
-
-    <style name="BaseStyleableToast">
-        <item name="length">SHORT</item>
+    <style name="coloredBackground">
+        <item name="android:colorBackground">#d2383f</item>
     </style>
 
-    <style name="coloredBackground" parent="BaseStyleableToast">
-        <item name="colorBackground">#FF5A5F</item>
+    <style name="coloredText">
+        <item name="android:textColor">#ff22</item>
     </style>
 
-    <style name="coloredText" parent="BaseStyleableToast">
-        <item name="textColor">#FF5A5F</item>
+    <style name="coloredBoldText">
+        <item name="android:textColor">#FF5A5F</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="coloredBoldText" parent="BaseStyleableToast">
-        <item name="textColor">#FF5A5F</item>
-        <item name="textBold">true</item>
+    <style name="customFont">
+        <!--<item name="font">@font/dosis</item>-->
     </style>
 
-    <style name="customFont" parent="BaseStyleableToast">
-        <item name="font">@font/dosis</item>
+    <style name="cornerRadius5Dp">
+        <item name="android:radius">5dp</item>
     </style>
 
-    <style name="cornerRadius5Dp" parent="BaseStyleableToast">
-        <item name="radius">5dp</item>
+    <style name="drawableStart">
+        <item name="android:drawableStart">@drawable/ic_airplanemode_inactive_black_24dp</item>
     </style>
 
-    <style name="iconStart" parent="BaseStyleableToast">
-        <item name="iconStart">@drawable/ic_airplanemode_inactive_black_24dp</item>
+    <style name="drawableEnd">
+        <item name="android:drawableEnd">@drawable/ic_airplanemode_inactive_black_24dp</item>
     </style>
 
-    <style name="iconEnd" parent="BaseStyleableToast">
-        <item name="iconEnd">@drawable/ic_airplanemode_inactive_black_24dp</item>
+    <style name="drawableStartEnd">
+        <item name="android:drawableStart">@drawable/ic_airplanemode_inactive_black_24dp</item>
+        <item name="android:drawableEnd">@drawable/ic_airplanemode_inactive_black_24dp</item>
     </style>
 
-    <style name="iconStartEnd" parent="BaseStyleableToast">
-        <item name="iconStart">@drawable/ic_airplanemode_inactive_black_24dp</item>
-        <item name="iconEnd">@drawable/ic_airplanemode_inactive_black_24dp</item>
-    </style>
-
-    <style name="coloredStroke" parent="BaseStyleableToast">
-        <item name="strokeWidth">2dp</item>
-        <item name="strokeColor">#ff00</item>
+    <style name="coloredStroke">
+        <item name="android:strokeWidth">10</item>
+        <item name="android:strokeColor">#ff00</item>
     </style>
 
     <style name="emptyStyle" />

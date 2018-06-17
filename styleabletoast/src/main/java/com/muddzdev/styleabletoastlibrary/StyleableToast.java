@@ -50,14 +50,14 @@ public class StyleableToast extends LinearLayout {
     private int font;
     private int length;
     private int style;
+    private int gravity;
     private float textSize;
     private boolean isTextSizeFromStyleXml = false;
-    private boolean solidBackground;
+    private boolean opaqueBackground;
     private boolean textBold;
     private String text;
     private TypedArray typedArray;
     private TextView textView;
-    private int gravity;
     private Toast toast;
     private LinearLayout rootLayout;
 
@@ -84,7 +84,7 @@ public class StyleableToast extends LinearLayout {
         this.iconStart = builder.iconStart;
         this.strokeColor = builder.strokeColor;
         this.strokeWidth = builder.strokeWidth;
-        this.solidBackground = builder.solidBackground;
+        this.opaqueBackground = builder.opaqueBackground;
         this.textColor = builder.textColor;
         this.textSize = builder.textSize;
         this.textBold = builder.textBold;
@@ -140,10 +140,13 @@ public class StyleableToast extends LinearLayout {
         if (cornerRadius > -1) {
             gradientDrawable.setCornerRadius(cornerRadius);
         }
-        if (backgroundColor != 0) {
+
+        if(backgroundColor !=0){
             gradientDrawable.setColor(backgroundColor);
         }
-        if (solidBackground) {
+
+
+        if (opaqueBackground) {
             gradientDrawable.setAlpha(getResources().getInteger(R.integer.fullBackgroundAlpha));
         }
 
@@ -225,22 +228,20 @@ public class StyleableToast extends LinearLayout {
         int defaultBackgroundColor = ContextCompat.getColor(getContext(), R.color.default_background_color);
         int defaultCornerRadius = (int) getResources().getDimension(R.dimen.default_corner_radius);
 
-        solidBackground = typedArray.getBoolean(R.styleable.StyleableToast_solidBackground, false);
-        backgroundColor = typedArray.getColor(R.styleable.StyleableToast_colorBackground, defaultBackgroundColor);
-        cornerRadius = (int) typedArray.getDimension(R.styleable.StyleableToast_radius, defaultCornerRadius);
-        length = typedArray.getInt(R.styleable.StyleableToast_length, 0);
-        gravity = typedArray.getInt(R.styleable.StyleableToast_gravity, Gravity.BOTTOM);
-
-        if (gravity == 1) {
-            gravity = Gravity.CENTER;
-        } else if (gravity == 2) {
-            gravity = Gravity.TOP;
+        opaqueBackground = typedArray.getInt(R.styleable.StyleableToast_android_opacity, 0) == -1;
+        backgroundColor = typedArray.getColor(R.styleable.StyleableToast_android_colorBackground, defaultBackgroundColor);
+        cornerRadius = (int) typedArray.getDimension(R.styleable.StyleableToast_android_radius, defaultCornerRadius);
+        gravity = typedArray.getInt(R.styleable.StyleableToast_android_gravity, Gravity.BOTTOM);
+        if (typedArray.hasValue(R.styleable.StyleableToast_android_strokeWidth) && typedArray.hasValue(R.styleable.StyleableToast_android_strokeColor)) {
+            strokeWidth = (int) typedArray.getFloat(R.styleable.StyleableToast_android_strokeWidth, 0);
+            strokeColor = typedArray.getColor(R.styleable.StyleableToast_android_strokeColor, Color.TRANSPARENT);
         }
 
-        if (typedArray.hasValue(R.styleable.StyleableToast_strokeColor) && typedArray.hasValue(R.styleable.StyleableToast_strokeWidth)) {
-            strokeWidth = (int) typedArray.getDimension(R.styleable.StyleableToast_strokeWidth, 0);
-            strokeColor = typedArray.getColor(R.styleable.StyleableToast_strokeColor, Color.TRANSPARENT);
-        }
+        //        if (gravity == 1) {
+//            gravity = Gravity.CENTER;
+//        } else if (gravity == 2) {
+//            gravity = Gravity.TOP;
+//        }
     }
 
     private void loadTextViewAttributes() {
@@ -248,10 +249,10 @@ public class StyleableToast extends LinearLayout {
             return;
         }
 
-        textColor = typedArray.getColor(R.styleable.StyleableToast_textColor, textView.getCurrentTextColor());
-        textBold = typedArray.getBoolean(R.styleable.StyleableToast_textBold, false);
-        textSize = typedArray.getDimension(R.styleable.StyleableToast_textSize, 0);
-        font = typedArray.getResourceId(R.styleable.StyleableToast_font, 0);
+        textColor = typedArray.getColor(R.styleable.StyleableToast_android_textColor, textView.getCurrentTextColor());
+        textBold = typedArray.getInt(R.styleable.StyleableToast_android_textStyle, 0) == 1;
+        textSize = typedArray.getDimension(R.styleable.StyleableToast_android_textSize, 0);
+        font = typedArray.getResourceId(R.styleable.StyleableToast_st_font, 0);
         isTextSizeFromStyleXml = textSize > 0;
     }
 
@@ -260,11 +261,12 @@ public class StyleableToast extends LinearLayout {
         if (style == 0) {
             return;
         }
-        iconStart = typedArray.getResourceId(R.styleable.StyleableToast_iconStart, 0);
-        iconEnd = typedArray.getResourceId(R.styleable.StyleableToast_iconEnd, 0);
+        iconStart = typedArray.getResourceId(R.styleable.StyleableToast_android_drawableStart, 0);
+        iconEnd = typedArray.getResourceId(R.styleable.StyleableToast_android_drawableEnd, 0);
     }
 
     public static class Builder {
+        private int gravity = Gravity.BOTTOM;
         private int cornerRadius = -1;
         private int backgroundColor;
         private int strokeColor;
@@ -275,10 +277,9 @@ public class StyleableToast extends LinearLayout {
         private int font;
         private int length;
         private float textSize;
-        private boolean solidBackground;
+        private boolean opaqueBackground;
         private boolean textBold;
         private String text;
-        private int gravity = Gravity.BOTTOM;
         private StyleableToast toast;
         private final Context context;
 
@@ -323,7 +324,7 @@ public class StyleableToast extends LinearLayout {
          * This call will make the StyleableToast's background completely solid without any opacity.
          */
         public Builder solidBackground() {
-            this.solidBackground = true;
+            this.opaqueBackground = true;
             return this;
         }
 
